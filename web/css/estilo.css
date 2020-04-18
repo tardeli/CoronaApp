@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.container-principal{
+	width: 90%;
+	margin: 20px auto;
+}
+
+.voltar{
+	margin-bottom: 50px;
+}
+
+.usuariologado{
+	position: absolute;
+	right: 0;
+	font-size: large;
+	color: white;
+	margin-right: 15px;
+}
+
+footer{
+	color:white;
+}
