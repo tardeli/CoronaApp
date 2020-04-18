@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Relatório</title>
+<title>Relatório por Idade</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -15,21 +15,16 @@
 <body>
 	<div class="container-principal">
 		<div class="jumbotron">
-
 			<h5>
-				Página Principal >> <small>Relatórios</small>
+				Relatórios >> <small>Relatório por Idade</small>
 			</h5>
 			<hr>
-			<a href="relatorioidade.jsp">Relatório de pacientes por idade entre 20 a 30 anos. </a> <br> 
-			<a href="relatorioidadeesintoma.jsp">Relatório de paciente e sintomas</a> <br>
+			<h6>Dados.</h6>
+			
 		</div>
 
+		<a href="relatorio.jsp">Voltar</a><br>
 		<%@ include file="/footer.jsp"%>
 	</div>
-
-
-
-
-
 </body>
 </html>

@@ -25,17 +25,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/coronapp/paciente">Paciente</a>
-          <a class="dropdown-item" href="#">Sintomas</a>
+          <a class="dropdown-item" href="/coronapp/sintoma.jsp">Sintomas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Relatórios
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Por idade</a>
-          <a class="dropdown-item" href="#">Por Sintomas</a>
-        </div>
+     <li class="nav-item">
+        <a class="navbar-brand" href="/coronapp/relatorio.jsp">Relatório</a>
       </li>
       <li class="nav-item">
         <a class="navbar-brand" href="/coronapp/sobre.jsp">Sobre</a>
