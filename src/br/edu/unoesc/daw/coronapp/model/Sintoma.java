@@ -9,6 +9,16 @@ package br.edu.unoesc.daw.coronapp.model;
 public class Sintoma {
 	private Integer codigo;
 	private String descricao;
+	
+	public Sintoma() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Sintoma(Integer codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
+	}
+
 
 	/**
 	 * @return the codigo

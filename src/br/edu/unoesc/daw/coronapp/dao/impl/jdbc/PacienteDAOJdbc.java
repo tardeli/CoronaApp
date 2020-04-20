@@ -91,9 +91,13 @@ public class PacienteDAOJdbc implements PacienteDAO {
 					paciente.setSintomas(getSintomas(paciente.getCodigo()));
 					listAll.add(paciente);
 				} while (rs.next());
+				
+				for (Paciente p : listAll) {
+					System.out.println(paciente.toString());
+				}
 			}
-			rs.close();
-			pstmt.close();
+			//rs.close();
+			//pstmt.close();
 			return listAll;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,8 +122,8 @@ public class PacienteDAOJdbc implements PacienteDAO {
 					sintomas.add(sintoma);
 				} while (localRs.next());
 			}
-			localRs.close();
-			localPstmt.close();
+			//localRs.close();
+			//localPstmt.close();
 			return sintomas;
 		} catch (Exception e) {
 			e.printStackTrace();

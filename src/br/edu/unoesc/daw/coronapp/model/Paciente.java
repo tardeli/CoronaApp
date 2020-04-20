@@ -16,7 +16,28 @@ public class Paciente {
 	private char sexo;
 	private Double latitude;
 	private Double longitude;
-	private volatile ArrayList<Sintoma> sintomas;
+	private volatile ArrayList<Sintoma> sintomas = new ArrayList<Sintoma>();
+
+	
+	
+	public Paciente() {
+	
+	}
+
+	public Paciente(Integer codigo, String nome, Date dataNascimento, char sexo, Double latitude, Double longitude) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	
+	}
+	
+	public void getAdicionar(Sintoma sintoma){
+		this.sintomas.add(sintoma);
+	}
 
 	/**
 	 * @return the codigo
@@ -108,9 +129,9 @@ public class Paciente {
 	public String getSintomas() {
 		StringBuffer sBuffer = new StringBuffer();
 		for (Sintoma sintoma : sintomas) {
-			sBuffer.append(sintoma.getDescricao() + ",");
+			sBuffer.append(sintoma.getDescricao() + ", ");
 		}
-		return sBuffer.toString().substring(0, sBuffer.length() - 1);
+		return sBuffer.toString().substring(0, sBuffer.length() - 2);
 	}
 
 	/**

@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Relatório</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="css/bootstrap-4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
@@ -20,6 +18,7 @@
 				Página Principal >> <small>Relatórios</small>
 			</h5>
 			<hr>
+			<a href="/coronapp/relatorios/pacientes">Listar Pacientes. </a> <br>
 			<a href="relatorioidade.jsp">Relatório de pacientes por idade entre 20 a 30 anos. </a> <br> 
 			<a href="relatorioidadeesintoma.jsp">Relatório de paciente e sintomas</a> <br>
 		</div>
