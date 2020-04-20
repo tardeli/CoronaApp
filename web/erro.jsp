@@ -12,7 +12,6 @@
 				<div class="col-md-12">
 					<div class="error-template">
 						<h1>Oops!</h1>
-						<h2>Acesso Negado!</h2>
 						<h4>${erro}</h4>
 						<div class="error-actions">
 							<a href="#" onclick="javascript:history.back();"

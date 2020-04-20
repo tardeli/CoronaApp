@@ -25,6 +25,7 @@
 					<th scope="col">Longitude</th>
 					<th scope="col">Sintomas</th>
 					<th scope="col">Mapa</th>
+					<th scope="col">Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +39,7 @@
 						<td>${paciente.longitude}</td>
 						<td>${paciente.sintomas}</td>
 						<td><a href="http://google.com/maps/@${paciente.latitude},${paciente.longitude}" target="blank_">Visualizar</a></td>
+						<td><a href="/coronapp/excluirpaciente?codigo=${paciente.codigo}">Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

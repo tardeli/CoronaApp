@@ -21,7 +21,7 @@ import br.edu.unoesc.daw.coronapp.util.DateUtil;
 /**
  * Servlet implementation class PacienteServlet
  */
-@WebServlet(urlPatterns = { "/paciente", "/salvarpaciente" })
+@WebServlet(urlPatterns = { "/paciente", "/salvarpaciente", "/excluirpaciente"})
 public class PacienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,8 @@ public class PacienteServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PacienteDAOJdbc pacienteDAOJdbc = new PacienteDAOJdbc();
 		SintomaPacienteDAOJdbc sintomaPacienteDAOJdbc = new SintomaPacienteDAOJdbc();
 		HttpSession session = request.getSession(false);
@@ -53,14 +54,14 @@ public class PacienteServlet extends HttpServlet {
 			for (String sintoma : sintomas) {
 				SintomaPaciente sintomaPaciente = new SintomaPaciente(Integer.parseInt(sintoma), paciente.getCodigo());
 				sintomaPacienteDAOJdbc.insert(sintomaPaciente);
-			}		
+			}
 			session.setAttribute("msg", "Cadastro realizado com sucesso!");
 			response.sendRedirect("/coronapp/paciente");
-		} catch(Exception e) {
+		} catch (Exception e) {
 			session.setAttribute("erro", "Erro ao realizar cadastro do paciente!");
 			response.sendRedirect("/coronapp/erro.jsp");
-		}	
-				
+		}
+
 	}
 
 	/**
@@ -69,10 +70,38 @@ public class PacienteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		SintomaDAOJdbc sintomaDAOJdbc = new SintomaDAOJdbc();
-		ArrayList<Sintoma> sintomas = sintomaDAOJdbc.getAll();
-		request.setAttribute("listaSintomas", sintomas);
-		request.getRequestDispatcher("/paciente.jsp").forward(request, response);
+
+		if (request.getRequestURI().endsWith("/paciente")) {
+			SintomaDAOJdbc sintomaDAOJdbc = new SintomaDAOJdbc();
+			ArrayList<Sintoma> sintomas = sintomaDAOJdbc.getAll();
+			request.setAttribute("listaSintomas", sintomas);
+			request.getRequestDispatcher("/paciente.jsp").forward(request, response);
+		}
+		if (request.getRequestURI().endsWith("/excluirpaciente")) {
+			PacienteDAOJdbc pacienteDAOJdbc = new PacienteDAOJdbc();
+			SintomaPacienteDAOJdbc sintomaPacienteDAOJdbc = new SintomaPacienteDAOJdbc();
+			ArrayList<SintomaPaciente> list = new ArrayList<SintomaPaciente>();
+			HttpSession session = request.getSession(false);
+			try {
+				Paciente paciente = new Paciente();
+				// preciso pegar os da requisição
+				paciente.setCodigo(Integer.valueOf(request.getParameter("codigo")));
+				
+				// exclui primeiro sintomas paciente
+				list = sintomaPacienteDAOJdbc.getPorPaciente(paciente);
+				for (SintomaPaciente sintomaPaciente : list) {
+					sintomaPacienteDAOJdbc.delete(sintomaPaciente);
+				}
+				
+				// exclui paciente
+				pacienteDAOJdbc.delete(paciente);
+							
+				response.sendRedirect("/coronapp/relatorios/pacientes");
+			} catch (Exception e) {
+				session.setAttribute("erro", "Erro ao realizar cadastro do paciente!");
+				response.sendRedirect("/coronapp/erro.jsp");
+			}
+		}
 	}
 
 }

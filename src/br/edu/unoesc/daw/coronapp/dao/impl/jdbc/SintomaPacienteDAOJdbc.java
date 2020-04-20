@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import br.edu.unoesc.daw.coronapp.dao.SintomaPacienteDAO;
+import br.edu.unoesc.daw.coronapp.model.Paciente;
 import br.edu.unoesc.daw.coronapp.model.SintomaPaciente;
 
 public class SintomaPacienteDAOJdbc implements SintomaPacienteDAO {
@@ -58,6 +59,31 @@ public class SintomaPacienteDAOJdbc implements SintomaPacienteDAO {
 			rs.close();
 			pstmt.close();
 			return listAll;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public ArrayList<SintomaPaciente> getPorPaciente(Paciente paciente) {
+		try {
+			ArrayList<SintomaPaciente> listPorPaciente = null;
+			SintomaPaciente sintomaPaciente = new SintomaPaciente();
+			pstmt = Conexao.getConnection().prepareStatement("select * from sintoma_paciente where codpac = ? ");
+			pstmt.setInt(1, paciente.getCodigo());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				listPorPaciente = new ArrayList<SintomaPaciente>();
+				do {
+					sintomaPaciente = new SintomaPaciente();
+					sintomaPaciente.setCodigoSintoma(rs.getInt("codsin"));
+					sintomaPaciente.setCodigoPaciente(rs.getInt("codpac"));
+					listPorPaciente.add(sintomaPaciente);
+				} while (rs.next());
+			}
+			rs.close();
+			pstmt.close();
+			return listPorPaciente;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
