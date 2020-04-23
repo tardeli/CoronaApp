@@ -8,3 +8,4 @@ insert into sintoma(dessin) values('Náuseas');
 insert into sintoma(dessin) values('Vômitos');
 insert into sintoma(dessin) values('Diarreia');
 insert into sintoma(dessin) values('Cansaço');
+

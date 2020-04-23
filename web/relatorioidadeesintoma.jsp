@@ -16,7 +16,7 @@
 	<div class="container-principal">
 		<div class="jumbotron">
 			<h5>
-				Relatórios >> <small>Relatório por Sintomas</small>
+				Relatórios >> <small>Relatório Acima de 60 anos e Sintomas</small>
 			</h5>
 			<hr>
 			<h6>Dados.</h6>

@@ -19,8 +19,8 @@
 			</h5>
 			<hr>
 			<a href="/coronapp/relatorios/pacientes">Listar Pacientes. </a> <br>
-			<a href="relatorioidade.jsp">Relatório de pacientes por idade entre 20 a 30 anos. </a> <br> 
-			<a href="relatorioidadeesintoma.jsp">Relatório de paciente e sintomas</a> <br>
+			<a href="/coronapp/relatorios/idade">Relatório de pacientes por idade entre 20 a 30 anos. </a> <br> 
+			<a href="relatorioidadeesintoma.jsp">Relatório de paciente acima de 60 anos, com Diarréia, Náuseas e Dificuldade de Respirar. </a> <br>
 		</div>
 
 		<%@ include file="/footer.jsp"%>

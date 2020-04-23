@@ -16,7 +16,7 @@ import br.edu.unoesc.daw.coronapp.model.Paciente;
 /**
  * Servlet implementation class PacienteServlet
  */
-@WebServlet(urlPatterns = { "/relatorios/pacientes" })
+@WebServlet(urlPatterns = { "/relatorios/pacientes", "/relatorios/idade"})
 public class RelatoriosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,15 +35,26 @@ public class RelatoriosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		
 		if (request.getRequestURI().contains("/pacientes")) {
 			session.setAttribute("relacaoPacientes", getRelacaoPacientes());
 			response.sendRedirect("/coronapp/relatorios/relacaoPacientes.jsp");
+		}
+		
+		if (request.getRequestURI().contains("/idade")) {
+			session.setAttribute("relacaoPacientesIdade", getRelacaoPacientesIdade_20_a_30());
+			response.sendRedirect("/coronapp/relatorios/relacaoPacientesIdade.jsp");
 		}
 	}
 
 	private ArrayList<Paciente> getRelacaoPacientes() {
 		PacienteDAOJdbc pacienteDAOJdbc = new PacienteDAOJdbc();
 		return pacienteDAOJdbc.getAll();
+	}
+	
+	private ArrayList<Paciente> getRelacaoPacientesIdade_20_a_30() {
+		PacienteDAOJdbc pacienteDAOJdbc = new PacienteDAOJdbc();
+		return pacienteDAOJdbc.getPacienteEntre_20_30_Anos();
 	}
 
 }

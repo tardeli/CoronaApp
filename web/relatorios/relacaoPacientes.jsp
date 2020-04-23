@@ -33,19 +33,25 @@
 					<tr>
 						<td>${paciente.codigo}</td>
 						<td>${paciente.nome}</td>
-						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${paciente.dataNascimento}" /></td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy"
+								value="${paciente.dataNascimento}" /></td>
 						<td>${paciente.sexo}</td>
 						<td>${paciente.latitude}</td>
 						<td>${paciente.longitude}</td>
 						<td>${paciente.sintomas}</td>
-						<td><a href="http://google.com/maps/@${paciente.latitude},${paciente.longitude}" target="blank_">Visualizar</a></td>
-						<td><a href="/coronapp/excluirpaciente?codigo=${paciente.codigo}">Excluir</a></td>
+						<td><a
+							href="http://google.com/maps/@${paciente.latitude},${paciente.longitude}"
+							target="blank_">Visualizar</a></td>
+						<td><a
+							href="/coronapp/excluirpaciente?codigo=${paciente.codigo}">Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-
+		<hr>
+		<a href="../relatorio.jsp">Voltar</a><br>
 	</div>
+	
 	<%@ include file="/footer.jsp"%>
 	<script src="../js/jquery-3.5.0.min.js" type="text/javascript"></script>
 	<script src="../css/bootstrap-4.3.1/js/bootstrap.min.js"
