@@ -137,7 +137,40 @@ public class PacienteDAOJdbc implements PacienteDAO {
 			return null;
 		}
 	}
-
+	
+	public ArrayList<Paciente> getPacienteAcima_60_Anos_ComSintomas() {
+		try {
+			ArrayList<Paciente> listAll = null;
+			Paciente paciente = new Paciente();
+			pstmt = Conexao.getConnection().prepareStatement("SELECT *FROM paciente where extract(year from age(datnaspac)) > 60 order by paciente.codpac asc");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				listAll = new ArrayList<Paciente>();
+				do {
+					paciente = new Paciente();
+					paciente.setCodigo(rs.getInt("codpac"));
+					paciente.setNome(rs.getString("nompac"));
+					paciente.setDataNascimento(rs.getDate("datnaspac"));
+					paciente.setSexo(rs.getString("sexpac").charAt(0));
+					paciente.setLatitude(rs.getDouble("latlocpac"));
+					paciente.setLongitude(rs.getDouble("lonlocpac"));
+					paciente.setSintomas(getSintomas(paciente.getCodigo()));
+					listAll.add(paciente);
+				} while (rs.next());
+				
+				for (Paciente p : listAll) {
+					System.out.println(paciente.toString());
+				}
+			}
+			//rs.close();
+			//pstmt.close();
+			return listAll;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	private ArrayList<Sintoma> getSintomas(int codigoPaciente) {
 		ArrayList<Sintoma> sintomas = null;
 		try {
